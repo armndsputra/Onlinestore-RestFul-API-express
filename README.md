@@ -7,6 +7,7 @@
 ## Overview
 **Authentication**
 > **Admin :** To get an admin user, please change the role in the database! role = vendor / customer -> administration
+
 > **Customer / Vendor :**  choice role default = customer and vendor
 
 - `POST /users/register` - Create new user
