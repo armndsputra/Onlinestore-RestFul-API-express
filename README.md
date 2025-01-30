@@ -15,4 +15,4 @@
 - `POST /users/login/` - Login 
 
 
-[Read the Documentation](guide/README.md)
+[Read the Documentation](guide/docs.md)
