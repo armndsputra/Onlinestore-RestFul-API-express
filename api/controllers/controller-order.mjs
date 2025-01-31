@@ -11,20 +11,22 @@ export const getAllOrders = async (req, res) => {
         .select('product quantity _id')
         .populate('product','product user price stock category desc path')
         .exec()
-        console.log(orders)
-        res.status(200).json({
-            message : 'succeed',
-            count : orders.length,
-            orders : orders.map(result => {
-                return {
-                    _id : result._id,
-                    quantity : result.quantity,
-                    user : result.user,
-                    order : result.product,
-                   
-                }
-            }),
-        })
+        if (orders.length > 0) {
+            res.status(200).json({
+                message : 'succeed',
+                count : orders.length,
+                orders : orders.map(result => {
+                    return {
+                        _id : result._id,
+                        quantity : result.quantity,
+                        user : result.user,
+                        order : result.product,
+                       
+                    }
+                }),
+            })
+        } else return res.status(404).json({ message : "Orders is not available !" })
+       
     } catch (err) {
         console.error(err)
         res.status(500).json({

@@ -19,7 +19,7 @@ export const verificationDeleteUser = async (req, res, next) => {
                 }) 
             } break
             default : {
-                if (user.role === process.env.ROLE_ADMINISTRATION) {
+                if (user.role === process.env.ROLE_ADMIN) {
                     
                     const data = {
                         id : user._id,

@@ -8,7 +8,7 @@ export default async (req, res, next) => {
 
         const user = await User.findById(id)
         if (user !== null) {
-            switch (user.role === 'administration' || user._id === id) {
+            switch (user.role === process.env.ROLE_ADMIN || user._id === id) {
                 case false : {
                     return res.status(403).json({ message : "Forbidden !" })
                 } break

@@ -1,6 +1,3 @@
-# RESTful Api Documentation
-### Online Shop
----
 ## Authentication : Example
 ### Registrasi 
 ```http
@@ -107,7 +104,7 @@ PATCH http://localhost:3000/products/6793a7b2cd8c74f6286aabba
     "message" : "succeed",
     "product" : {
         "id" : "6793a7b2cd8c74f6286aabba",
-        "user" : "6793a7b2cd8c74f6286aacsd", // id seller account
+        "user" : "6793a7b2cd8c74f6286aacsd", // id vendor account
         "product" : "PC AMD Ryzen 7, HDD 8TB",
         "price" : 350000000,
         "stock" : 3,
@@ -331,10 +328,10 @@ DELETE http://localhost:3000/orders/679adf4b43158777e736433a
 }
 ```
 ---
-## Administration Service : Example
+## Admin Service : Example
 ### Get All users
 ```http
-GET http://localhost:3000/administration/users/
+GET http://localhost:3000/admin/users/
 ``` 
 ***Response Success***
 ```json
@@ -377,7 +374,7 @@ GET http://localhost:3000/administration/users/
 ```
 ### Get By ID User
 ```http
-GET http://localhost:3000/administration/users/67998cca991335858d31d81a
+GET http://localhost:3000/admin/users/67998cca991335858d31d81a
 ```
 ```json
 {
@@ -387,7 +384,7 @@ GET http://localhost:3000/administration/users/67998cca991335858d31d81a
         "email": "example@mail.com",
         "phone_number": 0823XXXXXXXX,
         "address": "Yogyakarta",
-        "role": "administration",
+        "role": "admin",
         "gender": "none",
         "profile_picture": "uploads/users/2025-01-29T02:04:58.616Z.png",
         "created": "2025-01-29T02:04:58.693Z"
@@ -396,7 +393,7 @@ GET http://localhost:3000/administration/users/67998cca991335858d31d81a
 ```
 ### Delete By ID User
 ```http
-DELETE http://localhost:3000/administration/users/679ad3b6a7d11f3ba301a777
+DELETE http://localhost:3000/admini/users/679ad3b6a7d11f3ba301a777
 ```
 ***Response Seccess***
 ```json

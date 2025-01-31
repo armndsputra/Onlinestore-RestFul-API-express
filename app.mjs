@@ -6,13 +6,13 @@ import pkg from 'body-parser'
 const {urlencoded , json} = pkg
 
 // connection database
-import './configs/db.mjs'
+import './config/db.mjs'
 
 // Import Routes
 import routeProduct from './api/routes/route-product.mjs'
 import routeOrder from './api/routes/route-order.mjs'
 import routeUser from './api/routes/route-user.mjs'
-import routeAdministration from './api/routes/route-administration.mjs'
+import routeAdmin from './api/routes/route-admin.mjs'
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 app.use('/users', routeUser)
 app.use('/products',routeProduct)
 app.use('/orders', routeOrder)
-app.use('/administration', routeAdministration)
+app.use('/admin', routeAdmin)
 
 app.use((req, res, next) => {
     const error = new Error('The page you are looking for was not found')

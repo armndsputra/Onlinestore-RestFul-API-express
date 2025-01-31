@@ -97,7 +97,7 @@ export const deleteByIdUser = async (req, res) => {
                 return res.status(200).json({ message : 'succeed', deleted : user.deletedCount })
                 break
             }
-            case process.env.ROLE_ADMINISTRATION : {
+            case process.env.ROLE_ADMIN : {
                 return res.status(403).json({ message : 'Forbidden!' })
                 break
             }
