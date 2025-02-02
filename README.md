@@ -53,7 +53,8 @@
 - `POST /orders/` - Create new order
 - `GET /orders/:id` - Get detail orders
 - `DELETE /orders/:id` - Delete order
-
+- `POST /feedback/` - Create new feedback
+ 
 ## Admin Features
 > **Admin** 
 

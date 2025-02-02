@@ -13,6 +13,7 @@ import routeProduct from './api/routes/route-product.mjs'
 import routeOrder from './api/routes/route-order.mjs'
 import routeUser from './api/routes/route-user.mjs'
 import routeAdmin from './api/routes/route-admin.mjs'
+import routeFeedback from './api/routes/route-feedback.mjs'
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -37,6 +38,7 @@ app.use('/users', routeUser)
 app.use('/products',routeProduct)
 app.use('/orders', routeOrder)
 app.use('/admin', routeAdmin)
+app.use('/feedback', routeFeedback)
 
 app.use((req, res, next) => {
     const error = new Error('The page you are looking for was not found')

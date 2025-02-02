@@ -4,7 +4,7 @@ import Order from '../../models/model-order.mjs'
 import idFilter from '../../../utils/idFilter.mjs'
 
 // create order
-export const verificationCreateOrder = async (req, res, next) => {
+export const validateCreateOrder = async (req, res, next) => {
 
     try {
 
@@ -57,7 +57,7 @@ export const verificationCreateOrder = async (req, res, next) => {
 }
 
 // delete order
-export const verificationDeleteOrder = async (req, res, next) => {
+export const validateDeleteOrder = async (req, res, next) => {
 
     try {
 
@@ -91,7 +91,7 @@ export const verificationDeleteOrder = async (req, res, next) => {
 }
 
 // get by id order
-export const verificationGetByIdOrder = async (req, res, next) => {
+export const validateGetByIdOrder = async (req, res, next) => {
 
     try {
 

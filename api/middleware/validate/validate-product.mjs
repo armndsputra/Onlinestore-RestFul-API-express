@@ -4,7 +4,7 @@ import Product from '../../models/model-product.mjs'
 import idFilter from '../../../utils/idFilter.mjs'
 
 // create product
-export const verificationCreateProduct = async (req, res, next) => {
+export const validateCreateProduct = async (req, res, next) => {
 
     try {
 
@@ -49,7 +49,7 @@ export const verificationCreateProduct = async (req, res, next) => {
 }
 
 // edit product
-export const verificationEditProduct =  async (req, res, next) => {
+export const validateEditProduct =  async (req, res, next) => {
 
     try {
 
@@ -104,7 +104,7 @@ export const verificationEditProduct =  async (req, res, next) => {
 }
 
 // delete product
-export const verificationDeleteProduct = async (req, res, next) => {
+export const validateDeleteProduct = async (req, res, next) => {
 
     try {
 
@@ -138,7 +138,7 @@ export const verificationDeleteProduct = async (req, res, next) => {
 }
 
 // get by id product
-export const verificationGetByIdProduct = async (req, res, next) => {
+export const validateGetByIdProduct = async (req, res, next) => {
 
     try {
 
@@ -158,7 +158,7 @@ export const verificationGetByIdProduct = async (req, res, next) => {
 }
 
 // get by keywords
-export const verificationGetByKeywords = (req, res, next) => {
+export const validateGetByKeywords = (req, res, next) => {
 
     try {
 
@@ -181,7 +181,7 @@ export const verificationGetByKeywords = (req, res, next) => {
 }
 
 // get user product
-export const verificationGetUserProducts = (req, res, next) => {
+export const validateGetUserProducts = (req, res, next) => {
 
     try {
 

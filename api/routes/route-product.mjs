@@ -6,13 +6,13 @@ import { body } from 'express-validator'
 import { getAllProducts, createProduct, getByIdProduct, deleteByIdProduct, editByIdProduct, getByKeywords, getUserProducts } from '../controllers/controller-product.mjs'
 import roleAuthorization from '../middleware/role-authorization.mjs';
 import { 
-    verificationCreateProduct, 
-    verificationEditProduct, 
-    verificationDeleteProduct, 
-    verificationGetByIdProduct, 
-    verificationGetByKeywords,
-    verificationGetUserProducts 
-  } from '../middleware/role-based/verification-product.mjs'
+    validateCreateProduct, 
+    validateEditProduct, 
+    validateDeleteProduct, 
+    validateGetByIdProduct, 
+    validateGetByKeywords,
+    validateGetUserProducts 
+  } from '../middleware/validate/validate-product.mjs'
 
 import { roleVendor } from '../middleware/role-based/role-based.mjs';
 
@@ -40,7 +40,7 @@ const upload = multer({ storage, fileFilter });
 
 router.get('/', getAllProducts) // public
 
-router.get('/user', roleAuthorization, roleVendor, verificationGetUserProducts, getUserProducts) // only vendor account
+router.get('/user', roleAuthorization, roleVendor, validateGetUserProducts, getUserProducts) // only vendor account
 
 router.post('/', roleAuthorization, roleVendor, upload.array('pictures'), [
             body('product').isLength({ min : 1 }).trim(),
@@ -48,11 +48,11 @@ router.post('/', roleAuthorization, roleVendor, upload.array('pictures'), [
             body('stock').isLength({ min : 1}).trim(),
             body('desc').isLength({ min : 0 }).trim(),
             body('category').isLength({}).trim()
-      ], verificationCreateProduct, createProduct) // only vendor account
+      ], validateCreateProduct, createProduct) // only vendor account
 
-router.get('/:id', verificationGetByIdProduct, getByIdProduct) // public
+router.get('/:id', validateGetByIdProduct, getByIdProduct) // public
 
-router.delete('/:id', roleAuthorization, roleVendor, verificationDeleteProduct, deleteByIdProduct) // only vendor account
+router.delete('/:id', roleAuthorization, roleVendor, validateDeleteProduct, deleteByIdProduct) // only vendor account
 
 router.patch('/:id', roleAuthorization, roleVendor, upload.array('pictures'), [
             body('product').isLength({ }).trim(),
@@ -60,8 +60,8 @@ router.patch('/:id', roleAuthorization, roleVendor, upload.array('pictures'), [
             body('stock').isLength({ }).trim(),
             body('desc').isLength({ }).trim(),
             body('category').isLength({}).trim()
-      ], verificationEditProduct, editByIdProduct) // only vendor account
+      ], validateEditProduct, editByIdProduct) // only vendor account
 
-router.post('/query', [ body('keywords').isLength({ min : 1 }).trim() ], verificationGetByKeywords, getByKeywords) // public
+router.post('/query', [ body('keywords').isLength({ min : 1 }).trim() ], validateGetByKeywords, getByKeywords) // public
 
 export default router

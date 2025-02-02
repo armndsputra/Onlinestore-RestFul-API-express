@@ -1,9 +1,8 @@
-import User from '../../models/model-user.mjs'
-import { deleteFileOne } from '../../../utils/deleteFile.mjs'
 import idFilter from '../../../utils/idFilter.mjs';
+import User from '../../models/model-user.mjs'
 
 // delete user
-export const verificationDeleteUser = async (req, res, next) => {
+export const validateDeleteUser = async (req, res, next) => {
 
     try {
 
@@ -51,7 +50,7 @@ export const verificationDeleteUser = async (req, res, next) => {
     }
 }
 
-export const verificationGetByIdUser = (req, res, next) => {
+export const validateGetByIdUser = (req, res, next) => {
 
     const { id } = req.params;
     if (!idFilter(id)) { return res.status(400).json({ message : 'User ID is not available !'})}

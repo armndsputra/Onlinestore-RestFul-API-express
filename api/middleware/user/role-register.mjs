@@ -1,6 +1,6 @@
 import { validationResult, matchedData, body } from 'express-validator'
-import User from '../models/model-user.mjs';
-import { deleteFileOne } from '../../utils/deleteFile.mjs';
+import User from '../../models/model-user.mjs';
+import { deleteFileOne } from '../../../utils/deleteFile.mjs';
 
 // register
 export default async (req, res, next) => {

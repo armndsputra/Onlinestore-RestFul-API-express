@@ -3,8 +3,8 @@ const router = express()
 import multer from 'multer';
 import { body } from 'express-validator'
 import { createdUser, login } from '../controllers/controller-user.mjs'
-import roleRegister from '../middleware/role-register.mjs'
-import roleLogin from '../middleware/role-login.mjs'
+import roleRegister from '../middleware/user/role-register.mjs'
+import roleLogin from '../middleware/user/role-login.mjs'
 
 // configure storage for multer
 const storage = multer.diskStorage({

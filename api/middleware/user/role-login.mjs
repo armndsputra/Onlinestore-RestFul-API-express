@@ -1,5 +1,5 @@
 import { validationResult } from 'express-validator'
-import User from '../models/model-user.mjs'
+import User from '../../models/model-user.mjs'
 
 // login
 export default async (req, res, next) => {
