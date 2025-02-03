@@ -6,10 +6,10 @@ export const validateCreateFeedback = async (req, res, next) => {
 
     try {
 
-        const id = req.ID
+        const ID = req.ID
         const { productID, message } = req.body
 
-        const feedback = await Feedback.findOne({ productID : productID, customer : id })
+        const feedback = await Feedback.findOne({ productID : productID, customer : ID })
      
         if (feedback) return res.status(400).json({ message : 'You have already given feedback !'})
             
@@ -18,7 +18,7 @@ export const validateCreateFeedback = async (req, res, next) => {
         if (product !== null) {
             const data = {
                 productID,
-                customer : id,
+                customer : ID,
                 message,
                 vendor : product.user,
                 created : new Date()
@@ -53,13 +53,13 @@ export const validateGetFeedbackByProduct = async (req, res, next) => {
     try {
 
         const productID = req.params.id
-        const id = req.ID
+        const ID = req.ID
         
-        const feedback = await Feedback.findOne({ productID : productID, vendor : id })
+        const feedback = await Feedback.findOne({ productID : productID, vendor : ID })
         if (feedback !== null) {
             const data = {
                 productID,
-                vendor : id,
+                vendor : ID,
             }
 
             req.data = data

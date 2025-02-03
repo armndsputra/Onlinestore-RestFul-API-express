@@ -239,6 +239,74 @@ GET http://localhost:3000/products/user
     ]
 }
 ```
+### Get All Feedbacks
+```http
+GET http://localhost:3000/feedbacks
+```
+***Response Success***
+```json
+{
+    "message": "succeed",
+    "count": 2,
+    "feedbacks": [
+        {
+            "_id": "679fd8aba82fa5cf1bc3c9e1",
+            "productID": "679c600d2f8b43f1358a66c1",
+            "customer": {
+                "_id": "679c596e502ef02f9fe0614d",
+                "name": "example name"
+            },
+            "vendor": "679c5bd72f8b43f1358a66b9",
+            "message": "example message",
+            "created": "2025-02-02T20:42:19.012Z"
+        },
+        {
+            "_id": "67a0e6c3145a56c8b4a72349",
+            "productID": "679c600d2f8b43f1358a66c1",
+            "customer": {
+                "_id": "67a0e660145a56c8b4a72340",
+                "name": "example name"
+            },
+            "vendor": "679c5bd72f8b43f1358a66b9",
+            "message": "example message",
+            "created": "2025-02-03T15:54:43.625Z"
+        }
+    ]
+}
+```
+### Get Feedback by ID Products
+```http
+GET http://localhost:3000/feedbacks/:id
+```
+***Response Success***
+```json
+{
+    "message": "succeed",
+    "count": 2,
+    "feedbacks": [
+        {
+            "_id": "679fd8aba82fa5cf1bc3c9e1",
+            "productID": "679c600d2f8b43f1358a66c1",
+            "customer": {
+                "_id": "679c596e502ef02f9fe0614d",
+                "name": "example name"
+            },
+            "message": "example message",
+            "created": "2025-02-02T20:42:19.012Z"
+        },
+        {
+            "_id": "67a0e6c3145a56c8b4a72349",
+            "productID": "679c600d2f8b43f1358a66c1",
+            "customer": {
+                "_id": "67a0e660145a56c8b4a72340",
+                "name": "example name"
+            },
+            "message": "example message",
+            "created": "2025-02-03T15:54:43.625Z"
+        }
+    ]
+}
+```
 ---
 ## Customer Service : Example
 ### Create Order

@@ -21,8 +21,8 @@
     "password_confirmation" : "admin", // required
     "phone_number" : "0835XXXXXXXX", // required
     "address" : "JL damai No 20 Block D, Yogyakarta", // required
-    "role" : 1, // 1 -> customer , 2-> vendor || required
-    "gender" : 2, // 1 -> male , 2 -> female || required
+    "role" : 1, // customer : 1, vendor : 2 || required
+    "gender" : 2, // male : 1, female : 2 || required
     "profile_picture" : "image.jpg" // required
     }
   ```
@@ -45,7 +45,7 @@
 - `DELETE /products/:id` - Delete product
 - `GET /products/quaey` - Get by keywords
 - `GET /feedbacks/` - Get all feedback
-- `GET /feedbacks/:productID` - Get all feedbacks by productID
+- `GET /feedbacks/:id` - Get all feedbacks by productID
 
 
 ## Customer Features

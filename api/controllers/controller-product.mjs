@@ -69,7 +69,10 @@ export const getByIdProduct = async (req, res) => {
 
         const id = req.data
 
-        const product = await Product.findById(id).select('_id product price stock created desc path category').populate('user', 'name address phone_number').exec()
+        const product = await Product.findById(id)
+        .select('_id product price stock created desc path category')
+        .populate('user', 'name address phone_number')
+        .exec()
         if (product !== null) {
             res.status(201).json({
                 message : 'succeed',
