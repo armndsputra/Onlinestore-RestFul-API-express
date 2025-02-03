@@ -1,8 +1,15 @@
 import User from '../../models/model-user.mjs'
+import validateObjectID from '../../../utils/validateObjectID.mjs'
 
 export const roleVendor = async (req, res, next) => {
     
     try {
+
+        if (req.params.id) {
+            if (!validateObjectID(req.params.id)) {
+                return res.status(400).json({ message : "Woo, ID didn't pass validation !" })
+            }
+        }
 
         const { id } = req.user
         
@@ -26,6 +33,12 @@ export const roleCustomer = async (req, res, next) => {
 
     try {
 
+        if (req.params.id) {
+            if (!validateObjectID(req.params.id)) {
+                return res.status(400).json({ message : "Woo, ID didn't pass validation !" })
+            }
+        }
+
         const { id } = req.user
        
         const user = await User.findById({_id : id})
@@ -48,6 +61,12 @@ export const roleAdmin =  async (req, res, next) => {
     
     try {
 
+        if (req.params.id) {
+            if (!validateObjectID(req.params.id)) {
+                return res.status(400).json({ message : "Woo, ID didn't pass validation !" })
+            }
+        }
+
         const { id } = req.user
 
         const user = await User.findById(id)
@@ -57,6 +76,7 @@ export const roleAdmin =  async (req, res, next) => {
                     return res.status(403).json({ message : "Forbidden !" })
                 } break
                 case true : {
+                    req.ID = id
                     next()
                 } break
                 default  : {

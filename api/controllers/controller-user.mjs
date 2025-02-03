@@ -17,7 +17,7 @@ export const createdUser = (req, res) => {
             User.create({ name, email, password : hash, phone_number, address, role, gender, profile_picture, created }).then(result => {
                 
                 res.status(201).json({
-                    message : 'register success',
+                    message : 'You have successfully registered',
                     registered : {
                         id : result.id,
                         name : result.name,
@@ -53,15 +53,15 @@ export const login = (req, res) => {
 
     bcrypt.compare(tempPassword, password, function(err, isMatch) {
         if (err) return console.error(err)
-            if (isMatch === false) return res.status(401).json({ message : "Password is not correct !" })
+            if (isMatch === false) return res.status(401).json({ message : "Your password isn't correct !" })
 
         jwt.sign({ 
             id : id,
         }, process.env.JWT_KEY, { expiresIn: "4h" }, function(err, token) {
             if (err) return console.error(err)
                 res.status(201).json({
-                    message : "login success",
-                    token : token
+                    message : "You have successfully logged in",
+                    refresh_token : token
                 })
         })
 

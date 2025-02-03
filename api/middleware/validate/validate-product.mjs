@@ -1,12 +1,13 @@
 import { validationResult } from 'express-validator'
 import { deleteFileMany } from '../../../utils/deleteFile.mjs'
 import Product from '../../models/model-product.mjs'
-import idFilter from '../../../utils/idFilter.mjs'
 
 // create product
 export const validateCreateProduct = async (req, res, next) => {
 
     try {
+
+        const ID = req.ID
 
         let filePath = []
         const files = req.files;
@@ -26,7 +27,7 @@ export const validateCreateProduct = async (req, res, next) => {
         }
 
         const data = {
-            user : req.ID,
+            user : ID,
             product : req.body.product,
             price : req.body.price,
             stock : req.body.stock,
@@ -54,8 +55,6 @@ export const validateEditProduct =  async (req, res, next) => {
     try {
 
         const id = req.params.id
-
-        if (!idFilter(id)) return res.status(404).json({ message : 'ID is not valid !' })
 
         const user = await Product.find({_id : id }).exec()
         if (user.length == 0 ) return res.status(404).json({ message: 'Product ID is not available !' })
@@ -110,8 +109,6 @@ export const validateDeleteProduct = async (req, res, next) => {
 
         const _id = req.params.id
 
-        if (!idFilter(_id)) return res.status(404).json({ message : 'ID is not valid !' })
-
         const user = await Product.find({_id}).exec()
         if (user.length == 0 ) return res.status(404).json({ message: 'Product ID is not available !' })
         if (user[0].user.toHexString() !== req.ID) return res.status(400).json({ message: 'Unauthorized access !' })
@@ -143,8 +140,6 @@ export const validateGetByIdProduct = async (req, res, next) => {
     try {
 
         const id = req.params.id
-        if (!idFilter(id)) return res.status(404).json({ message : 'Product ID is not valid !' })
-        
         req.data = id
         next()
 
@@ -185,9 +180,9 @@ export const validateGetUserProducts = (req, res, next) => {
 
     try {
 
-        const { id } = req.user
+        const ID = req.ID
 
-        req.data = id
+        req.data = ID
         next()
 
     } catch (err) {

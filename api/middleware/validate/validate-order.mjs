@@ -1,7 +1,6 @@
 import { validationResult } from 'express-validator'
 import Product from '../../models/model-product.mjs'
 import Order from '../../models/model-order.mjs'
-import idFilter from '../../../utils/idFilter.mjs'
 
 // create order
 export const validateCreateOrder = async (req, res, next) => {
@@ -14,12 +13,6 @@ export const validateCreateOrder = async (req, res, next) => {
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
-        }
-
-        if (!idFilter(productID)) {
-            return res.status(403).json({
-                message : 'Product ID is not valid !'
-            })
         }
 
         const order = await Order.findOne({ user : id, product : productID } )
@@ -63,12 +56,6 @@ export const validateDeleteOrder = async (req, res, next) => {
 
         const id = req.ID
         const orderID = req.params.id
-
-        if (!idFilter(orderID)) {
-            return res.status(403).json({
-                message : 'Order ID is not valid !'
-            })
-        }
         
         const order = await Order.findOne({ _id : orderID }).exec()
         if (order !== null) {
@@ -97,12 +84,6 @@ export const validateGetByIdOrder = async (req, res, next) => {
 
         const id = req.ID
         const orderID = req.params.id
-        
-        if (!idFilter(orderID)) {
-            return res.status(403).json({
-                message : 'Order ID is not valid !'
-            })
-        }
 
         const order = await Order.findOne({ _id : orderID, user : id }).exec()
         if (order !== null) {

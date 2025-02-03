@@ -44,6 +44,8 @@
 - `GET /products/` - Get all products
 - `DELETE /products/:id` - Delete product
 - `GET /products/quaey` - Get by keywords
+- `GET /feedbacks/` - Get all feedback
+- `GET /feedbacks/:productID` - Get all feedbacks by productID
 
 
 ## Customer Features
@@ -53,7 +55,7 @@
 - `POST /orders/` - Create new order
 - `GET /orders/:id` - Get detail orders
 - `DELETE /orders/:id` - Delete order
-- `POST /feedback/` - Create new feedback
+- `POST /feedbacks/` - Create new feedback to vendor
  
 ## Admin Features
 > **Admin** 

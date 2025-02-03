@@ -38,7 +38,7 @@ app.use('/users', routeUser)
 app.use('/products',routeProduct)
 app.use('/orders', routeOrder)
 app.use('/admin', routeAdmin)
-app.use('/feedback', routeFeedback)
+app.use('/feedbacks', routeFeedback)
 
 app.use((req, res, next) => {
     const error = new Error('The page you are looking for was not found')

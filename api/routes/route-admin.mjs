@@ -11,7 +11,7 @@ only admin
 Step routing
 routes -> middleware -> controller
 ------------------------------------------------
-delete user = delete user orders !
+-- delete user ( vendor and customer ) = delete all source files
 */
 
 router.get('/users', roleAuthorization, roleAdmin, getAllUsers)

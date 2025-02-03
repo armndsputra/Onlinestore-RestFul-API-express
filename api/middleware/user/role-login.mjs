@@ -15,7 +15,7 @@ export default async (req, res, next) => {
 
         const user = await User.findOne({ email }).exec()
         if (!user) {
-            return res.status(400).json({ message: 'Email is not exists !' })
+            return res.status(400).json({ message: "Your email isn't exists !" })
         }
 
         const data = {

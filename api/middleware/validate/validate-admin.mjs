@@ -1,14 +1,14 @@
-import idFilter from '../../../utils/idFilter.mjs';
+import validateObjectID from '../../../utils/validateObjectID.mjs';
 import User from '../../models/model-user.mjs'
 
-// delete user
+// 
 export const validateDeleteUser = async (req, res, next) => {
 
     try {
 
         const { id } = req.params;
 
-        if (!idFilter(id)) { return res.status(400).json({ message : 'ID is not valid !' })}
+        if (!validateObjectID(id)) { return res.status(400).json({ message : "Woo, ID didn't pass validation !" })}
 
         const user = await User.findById(id).exec()
         switch (user) {
@@ -53,8 +53,10 @@ export const validateDeleteUser = async (req, res, next) => {
 export const validateGetByIdUser = (req, res, next) => {
 
     const { id } = req.params;
-    if (!idFilter(id)) { return res.status(400).json({ message : 'User ID is not available !'})}
+
+    if (!validateObjectID(id)) { return res.status(400).json({ message : "Woo, ID didn't pass validation !" })}
     
     req.data = id
+
     next()
 }

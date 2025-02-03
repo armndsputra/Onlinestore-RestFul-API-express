@@ -25,12 +25,12 @@ export default async (req, res, next) => {
         if (password) {
         const isPassword = await body('password_confirmation')
             .equals(password)
-            .withMessage('Passwords do not match !')
+            .withMessage("Your password doesn't match !")
             .run(req);
 
             if (isPassword.errors.length > 0) {
                 deleteFileOne(filePath)
-                return res.status(400).json({ message : "Passwords do not match !"})
+                return res.status(400).json({ message : "Your password doesn't match !" })
             }
         }
     

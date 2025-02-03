@@ -98,7 +98,7 @@ export const deleteByIdUser = async (req, res) => {
                 break
             }
             case process.env.ROLE_ADMIN : {
-                return res.status(403).json({ message : 'Forbidden!' })
+                return res.status(403).json({ message : 'Forbidden ..!' })
                 break
             }
         }
