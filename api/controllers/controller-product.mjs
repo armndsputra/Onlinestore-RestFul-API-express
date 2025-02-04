@@ -1,4 +1,5 @@
 import Product from '../models/model-product.mjs';
+import Feedback from '../models/model-feedback.mjs';
 
 // get all product
 export const getAllProducts = async (req, res) => {
@@ -97,7 +98,14 @@ export const deleteByIdProduct = async (req, res) => {
         
         const id = req.data
 
+        const feedbacks = await Feedback.find({ productID : id}).exec()
+        if (feedbacks) {
+            await Feedback.deleteMany({ productID : id })
+        }
+
+        // return
         const product = await Product.deleteOne({_id : id}).exec()
+        
         res.status(201).json({
             message : 'succeed',
             deleted : product.deletedCount,

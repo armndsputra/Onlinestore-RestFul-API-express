@@ -38,30 +38,30 @@
 ## Vendor Features
 > **Vendor :** Become a seller
 
-- `POST /products/` - Create new product
-- `PATCH /products/:id` - Update product
-- `GET /products/user` - Get all user products
-- `GET /products/` - Get all products
-- `DELETE /products/:id` - Delete product
-- `GET /products/quaey` - Get by keywords
-- `GET /feedbacks/` - Get all feedback
-- `GET /feedbacks/:id` - Get all feedbacks by productID
+- [x] `POST /products/` - Create new product
+- [x] `PATCH /products/:id` - Update product
+- [x] `GET /products/user` - Get all user products
+- [x] `GET /products/` - Get all products
+- [x] `DELETE /products/:id` - Delete product
+- [x] `GET /products/quaey` - Get by keywords
+- [x] `GET /feedbacks/` - Get all feedback
+- [x] `GET /feedbacks/:id` - Get all feedbacks by productID
 
 
 ## Customer Features
 > **Customer** 
 
-- `GET /products/` - Get all products
-- `POST /orders/` - Create new order
-- `GET /orders/:id` - Get detail orders
-- `DELETE /orders/:id` - Delete order
-- `POST /feedbacks/` - Create new feedback to vendor
+- [x] `GET /products/` - Get all products
+- [x] `POST /orders/` - Create new order
+- [x] `GET /orders/:id` - Get detail orders
+- [x] `DELETE /orders/:id` - Delete order
+- [x] `POST /feedbacks/` - Create new feedback to vendor
  
 ## Admin Features
 > **Admin** 
 
-- `GET /admin/users/` - Get all users
-- `GET /admin/users/:id` - Get detail user
-- `DELETE /admin/users/:id` - Delete user
+- [x] `GET /admin/users/` - Get all users
+- [x] `GET /admin/users/:id` - Get detail user
+- [x] `DELETE /admin/users/:id` - Delete user
   
 [Read Documentation](guide/docs.md)

@@ -119,7 +119,7 @@ export const validateDeleteProduct = async (req, res, next) => {
         }
         const filePath = product.path.split(' ')
         if (filePath) {
-            deleteFileMany(filePath)
+             deleteFileMany(filePath)
         }
 
         req.data = _id

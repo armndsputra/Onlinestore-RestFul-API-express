@@ -2,6 +2,7 @@ import User from '../models/model-user.mjs'
 import Product from '../models/model-product.mjs'
 import Order from '../models/model-order.mjs'
 import { deleteFileMany } from '../../utils/deleteFile.mjs'
+import Feedback from '../models/model-feedback.mjs'
 
 // get all users
 export const getAllUsers = async (req, res) => {
@@ -82,6 +83,11 @@ export const deleteByIdUser = async (req, res) => {
                     })
                     // return
                     
+                }
+
+                const feedbacks = await Feedback.find({ vendor : id}).exec()
+                if (feedbacks) {
+                    await Feedback.deleteMany({ vendor : id }).exec()
                 }
                 
                 const user = await User.deleteOne({ _id : id })

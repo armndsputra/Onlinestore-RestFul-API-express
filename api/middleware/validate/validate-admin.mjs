@@ -1,5 +1,6 @@
 import validateObjectID from '../../../utils/validateObjectID.mjs';
 import User from '../../models/model-user.mjs'
+import { deleteFileOne } from '../../../utils/deleteFile.mjs';
 
 // 
 export const validateDeleteUser = async (req, res, next) => {
