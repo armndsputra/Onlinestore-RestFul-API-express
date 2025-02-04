@@ -9,9 +9,9 @@ import { roleAdmin } from '../middleware/role-based/role-based.mjs'
 /*
 only admin
 Step routing
-routes -> middleware -> controller
+routes --> middleware --> controller
 ------------------------------------------------
--- delete user ( vendor and customer ) = delete all source files
+-- delete user ( vendor and customer ) = delete all source files ( products, feedback ) user
 */
 
 router.get('/users', roleAuthorization, roleAdmin, getAllUsers)

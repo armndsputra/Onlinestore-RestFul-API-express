@@ -11,8 +11,8 @@ POST http://localhost:3000/users/register
     "password_confirmation" : "admin", // required
     "phone_number" : "0835XXXXXXXX", // required
     "address" : "JL damai No 20 Block D, Yogyakarta", // required
-    "role" : 1, // 1 -> customer , 2-> vendor || required
-    "gender" : 2, // 1 -> male , 2 -> female || required
+    "role" : 1, // customer : 1 , vendor : 2 || required
+    "gender" : 2, // male : 1 , female : 2 || required
     "profile_picture" : "image.jpg" // required
 
 }
@@ -24,7 +24,7 @@ POST http://localhost:3000/users/register
     "registered" : {
         "id" : "6791f71d5ac31ed90a4003c4",
         "name" : "example",
-        "email" : "lisa@mail.com",
+        "email" : "example@mail.com",
         "phone_number" : "0823XXXXXXXX",
         "role" : "customer",
         "gender" : "female",
@@ -47,7 +47,8 @@ POST http://localhost:3000/users/login
 ***Response Seccess :***
 ```json
 {
-    "token" : "randomtoken" // token for authentication
+    "message": "You have successfully logged in",
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTk4Y2NhOTkxMzM1ODU4ZDMxZDgxYSIsImlhdCI6MTczODY1MzkxNCwiZXhwIjoxNzM4NjY4MzE0fQ.f-_KtCH6DE_V2_SDpkKTnLl7ac0SWiCmuwbZBiyHs9s"
 }
 ```
 
@@ -393,6 +394,27 @@ DELETE http://localhost:3000/orders/679adf4b43158777e736433a
 {
     "message": "succeed",
     "deleted": 1
+}
+```
+### Create Feedback Product
+```http
+POST http://localhost:3000/feedbacks
+```
+```json
+{
+    "productID" : "679ad4aba7d11f3ba301a783",
+    "message" : "bad a product"
+}
+```
+***Response Success***
+```json
+{
+    "_id" : "",
+    "productID" : "",
+    "message" : "",
+    "created" : "",
+    "vendor" : "",
+    "customer" : ""
 }
 ```
 ---
