@@ -1,7 +1,7 @@
 import Product from '../../models/model-product.mjs'
 import Feedback from '../../models/model-feedback.mjs'
 
-// only for customer
+// customer
 export const validateCreateFeedback = async (req, res, next) => {
 
     try {
@@ -20,7 +20,7 @@ export const validateCreateFeedback = async (req, res, next) => {
                 productID,
                 customer : ID,
                 message,
-                vendor : product.user,
+                vendor : product.vendor,
                 created : new Date()
             }
 
@@ -35,6 +35,7 @@ export const validateCreateFeedback = async (req, res, next) => {
 
 }
 
+// vendor
 export const validateGetAllFeedback = async (req, res, next) => {
 
     try {
@@ -48,6 +49,7 @@ export const validateGetAllFeedback = async (req, res, next) => {
 
 }
 
+// vendor
 export const validateGetFeedbackByProduct = async (req, res, next) => {
 
     try {

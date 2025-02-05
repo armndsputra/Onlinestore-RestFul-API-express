@@ -1,5 +1,6 @@
 import Feedback from '../models/model-feedback.mjs'
 
+// customer
 export const createFeedback = (req, res) => {
     
      const feedback = new Feedback(req.data)
@@ -24,6 +25,7 @@ export const createFeedback = (req, res) => {
 
 }
 
+// vendor
 export const getAllFeedback = async (req, res) => {
 
     try {
@@ -46,6 +48,7 @@ export const getAllFeedback = async (req, res) => {
 
 }
 
+// vendor
 export const getFeedbackByProduct = async (req, res) => {
 
     try {
