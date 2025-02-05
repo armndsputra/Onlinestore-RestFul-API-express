@@ -14,6 +14,7 @@ import routeOrder from './api/routes/route-order.mjs'
 import routeUser from './api/routes/route-user.mjs'
 import routeAdmin from './api/routes/route-admin.mjs'
 import routeFeedback from './api/routes/route-feedback.mjs'
+import routeOrdered from './api/routes/route-ordered.mjs'
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -37,6 +38,7 @@ app.use((req, res, next) => {
 app.use('/users', routeUser)
 app.use('/products',routeProduct)
 app.use('/orders', routeOrder)
+app.use ('/ordered', routeOrdered)
 app.use('/admin', routeAdmin)
 app.use('/feedbacks', routeFeedback)
 

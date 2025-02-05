@@ -54,6 +54,32 @@ POST http://localhost:3000/users/login
 
 ---
 ## Vendor Service : Example
+### Get All Ordered Product
+```http
+GET http://localhost:3000/ordered
+```
+***Response Seccess :***
+```json
+{
+    "message": "ordered",
+    "count": 1,
+    "orders": [
+        {
+            "_id": "67a2b1b0bd17f7f72527f82d",
+            "product": "67a2a96a5f4a1dbdb26461ad",
+            "customer": {
+                "_id": "67a203582260654fb86feae5",
+                "name": "example name",
+                "phone_number": 0,
+                "address": "Kashian bantul No 120, Yogyakarta",
+                "gender": "male"
+            },
+            "quantity": 1,
+            "created": "2025-02-05T00:32:48.557Z"
+        }
+    ]
+}
+```
 ### Create Product
 ```http
 POST http://localhost:3000/products
@@ -68,7 +94,7 @@ POST http://localhost:3000/products
     "pictures" : "image.jpg", // max 5 files
 }
 ```
-***Response Success :***
+***Response Success***
 ```json
 {
     "message" : "OK",
@@ -218,17 +244,17 @@ POST http://localhost:3000/products/query
 ```
 ### Get All User Products
 ```http
-GET http://localhost:3000/products/user
+GET http://localhost:3000/products/vendor
 ```
 ***Response Success***
 ```json
 {
-    "message" : "succeed",
+    "message" : "update success",
     "count" : 1,
     "products" : [
         {
             "_id" : "679ad4aba7d11f3ba301a783",
-            "user" : "679ad3b6a7d11f3ba301a777",
+            "vendor" : "679ad3b6a7d11f3ba301a777",
             "product" : "PC AMD Ryzen 7, HDD 8TB",
             "price" : 350000000,
             "stock" : 3,

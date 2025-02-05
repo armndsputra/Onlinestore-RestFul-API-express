@@ -1,8 +1,9 @@
 import { validationResult } from 'express-validator'
 import { deleteFileMany } from '../../../utils/deleteFile.mjs'
 import Product from '../../models/model-product.mjs'
+import validateObjectID from '../../../utils/validateObjectID.mjs'
 
-// create product
+// create product | vendor
 export const validateCreateProduct = async (req, res, next) => {
 
     try {
@@ -27,7 +28,7 @@ export const validateCreateProduct = async (req, res, next) => {
         }
 
         const data = {
-            user : ID,
+            vendor : ID,
             product : req.body.product,
             price : req.body.price,
             stock : req.body.stock,
@@ -49,7 +50,7 @@ export const validateCreateProduct = async (req, res, next) => {
 
 }
 
-// edit product
+// edit/update product | vendor
 export const validateEditProduct =  async (req, res, next) => {
 
     try {
@@ -58,7 +59,7 @@ export const validateEditProduct =  async (req, res, next) => {
 
         const user = await Product.find({_id : id }).exec()
         if (user.length == 0 ) return res.status(404).json({ message: 'Product ID is not available !' })
-        if (user[0].user.toHexString() !== req.ID) return res.status(400).json({ message: 'Unauthorized access !' })
+        if (user[0].vendor.toHexString() !== req.ID) return res.status(400).json({ message: 'Unauthorized access !' })
 
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
@@ -102,7 +103,7 @@ export const validateEditProduct =  async (req, res, next) => {
 
 }
 
-// delete product
+// delete/remove product | vendor
 export const validateDeleteProduct = async (req, res, next) => {
 
     try {
@@ -110,8 +111,8 @@ export const validateDeleteProduct = async (req, res, next) => {
         const _id = req.params.id
 
         const user = await Product.find({_id}).exec()
-        if (user.length == 0 ) return res.status(404).json({ message: 'Product ID is not available !' })
-        if (user[0].user.toHexString() !== req.ID) return res.status(400).json({ message: 'Unauthorized access !' })
+        if (user.length == 0 ) return res.status(404).json({ message: "Product ID isn't available !" })
+        if (user[0].vendor.toHexString() !== req.ID) return res.status(400).json({ message: 'Unauthorized access !' })
 
         const product = await Product.findById(_id).exec()
         if (!product) {
@@ -134,12 +135,15 @@ export const validateDeleteProduct = async (req, res, next) => {
 
 }
 
-// get by id product
+// get by id product | public
 export const validateGetByIdProduct = async (req, res, next) => {
 
     try {
 
         const id = req.params.id
+
+        if (!validateObjectID(id)) return res.status(403).json({ message : "Product ID isn't valid !" })
+
         req.data = id
         next()
 
@@ -152,7 +156,7 @@ export const validateGetByIdProduct = async (req, res, next) => {
 
 }
 
-// get by keywords
+// get by keywords | public
 export const validateGetByKeywords = (req, res, next) => {
 
     try {
@@ -175,8 +179,8 @@ export const validateGetByKeywords = (req, res, next) => {
 
 }
 
-// get user product
-export const validateGetUserProducts = (req, res, next) => {
+// get user product | vendor
+export const validateGetProductsVendor = (req, res, next) => {
 
     try {
 

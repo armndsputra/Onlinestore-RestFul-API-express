@@ -2,7 +2,7 @@ import { validationResult } from 'express-validator'
 import Product from '../../models/model-product.mjs'
 import Order from '../../models/model-order.mjs'
 
-// create order
+// create order | customer
 export const validateCreateOrder = async (req, res, next) => {
 
     try {
@@ -15,14 +15,15 @@ export const validateCreateOrder = async (req, res, next) => {
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const order = await Order.findOne({ user : ID, product : productID } )
+        const order = await Order.findOne({ customer : ID, product : productID } )
         switch (order) {
             case null:
                 const product = await Product.findById({ _id : productID }).exec()
                 if (product !== null) {
                     const data = {
                         product : product._id.toHexString(),
-                        user: ID,
+                        customer : ID,
+                        vendor : product.vendor,
                         quantity : quantity ? quantity : 1,
                         created : new Date()
                     }
@@ -49,7 +50,7 @@ export const validateCreateOrder = async (req, res, next) => {
 
 }
 
-// delete order
+// delete order | customer
 export const validateDeleteOrder = async (req, res, next) => {
 
     try {
@@ -59,7 +60,7 @@ export const validateDeleteOrder = async (req, res, next) => {
         
         const order = await Order.findOne({ _id : id }).exec()
         if (order !== null) {
-            if (order.user.toHexString() === ID) {
+            if (order.customer.toHexString() === ID) {
             
                 req.data = id
                 next()
@@ -77,7 +78,7 @@ export const validateDeleteOrder = async (req, res, next) => {
 
 }
 
-// get by id order
+// get by id order | customer
 export const validateGetByIdOrder = async (req, res, next) => {
 
     try {
@@ -85,7 +86,7 @@ export const validateGetByIdOrder = async (req, res, next) => {
         const ID = req.ID
         const id = req.params.id
 
-        const order = await Order.findOne({ _id : id, user : ID }).exec()
+        const order = await Order.findOne({ _id : id, customer : ID }).exec()
         if (order !== null) {
             req.data = order._id
             next()

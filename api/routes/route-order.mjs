@@ -10,12 +10,12 @@ import { roleCustomer } from '../middleware/role-based/role-based.mjs'
 router.post('/',roleAuthorization, roleCustomer, [
             body('productID').isLength({ min: 1 }).trim(),
             body('quantity').isLength({ min: 0 }).trim(),
-        ], validateCreateOrder, createOrder) // only customer account
+        ], validateCreateOrder, createOrder) // customer
 
-router.get('/', roleAuthorization, roleCustomer, getAllOrders) // only customer account
+router.get('/', roleAuthorization, roleCustomer, getAllOrders) // customer
 
-router.delete('/:id', roleAuthorization, roleCustomer, validateDeleteOrder, deleteByIdOreder) // only customer account
+router.delete('/:id', roleAuthorization, roleCustomer, validateDeleteOrder, deleteByIdOreder) // customer
 
-router.get('/:id', roleAuthorization, roleCustomer, validateGetByIdOrder, getByIdOrder) // only customer account
+router.get('/:id', roleAuthorization, roleCustomer, validateGetByIdOrder, getByIdOrder) // customer
 
 export default router;

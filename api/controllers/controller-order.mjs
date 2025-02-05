@@ -1,13 +1,13 @@
 import Order from '../models/model-order.mjs';
 
-// get all orders
+// get all orders | customer
 export const getAllOrders = async (req, res) => {
     
     try {
 
         const id = req.ID
        
-        const orders = await Order.find({ user : id})
+        const orders = await Order.find({ customer : id})
         .select('product quantity _id')
         .populate('product','product user price stock category desc path')
         .exec()
@@ -19,7 +19,7 @@ export const getAllOrders = async (req, res) => {
                     return {
                         _id : result._id,
                         quantity : result.quantity,
-                        user : result.user,
+                        customer : result.customer,
                         order : result.product,
                        
                     }
@@ -35,19 +35,20 @@ export const getAllOrders = async (req, res) => {
     }
 }
 
-// create order
+// create order | customer
 export const createOrder = async (req, res) => {
    
     try {
         
-        const { product, quantity, user, created } = req.data
-        const order = (await Order.create({ product, quantity, user, created}))
+        const { product, quantity, customer, vendor, created } = req.data
+        const order = (await Order.create({ product, quantity, customer, vendor, created }))
         return res.status(201).json({
             message : 'succeed',
             ordered : {
                 _id : order._id,
                 product : order.product,
-                user : order.user,
+                vendor : order.vendor,
+                customer : order.customer,
                 quantity : order.quantity,
                 created : order.created
             }
@@ -61,7 +62,7 @@ export const createOrder = async (req, res) => {
     }   
 }
 
-// delete order
+// delete order | customer
 export const deleteByIdOreder = (req, res) => {
 
     const id = req.data
@@ -80,7 +81,7 @@ export const deleteByIdOreder = (req, res) => {
     
 }
 
-// get by id order
+// get by id order | customer
 export const getByIdOrder = async (req, res) => {
     
     try {

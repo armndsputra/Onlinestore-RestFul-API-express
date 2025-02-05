@@ -3,7 +3,8 @@ const { Schema } = mongoose;
 
 const setSchema = new Schema({
     product : { type : mongoose.Schema.Types.ObjectId, required: true , ref : 'products' },
-    user : { type : mongoose.Schema.Types.ObjectId, required: true , ref : 'users' },
+    customer : { type : mongoose.Schema.Types.ObjectId, required: true , ref : 'users' },
+    vendor : { type : mongoose.Schema.Types.ObjectId, required: true , ref : 'users' },
     quantity : { type : Number, required: false, default : 1 },
     created : { type : Date, required : true }
 })

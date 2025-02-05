@@ -40,19 +40,21 @@
 
 - [x] `POST /products/` - Create new product
 - [x] `PATCH /products/:id` - Update product
-- [x] `GET /products/user` - Get all user products
+- [x] `GET /products/vendor` - Get all products vendor
 - [x] `GET /products/` - Get all products
 - [x] `DELETE /products/:id` - Delete product
 - [x] `GET /products/quaey` - Get by keywords
 - [x] `GET /feedbacks/` - Get all feedback
 - [x] `GET /feedbacks/:id` - Get all feedbacks by productID
+- [X] `GET /ordered/` - Get all ordered  from customer
 
 
 ## Customer Features
 > **Customer** 
 
 - [x] `GET /products/` - Get all products
-- [x] `POST /orders/` - Create new order
+- [x] `GET /orders/` - Get all orders
+- [x] `POST /orders/` - Create new order to vendor
 - [x] `GET /orders/:id` - Get detail orders
 - [x] `DELETE /orders/:id` - Delete order
 - [x] `POST /feedbacks/` - Create new feedback to vendor
